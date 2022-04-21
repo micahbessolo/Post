@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+</head>
+<body>
+    <form id="form" method="POST" action="/post-feedback">
+        <h2>Contact Me</h2>
+          <input type="text" id="fname" name="name" required="required" placeholder="full name">
+          <input type="text" id="email" name="email" required="required" placeholder="Email">
+          <textarea type="text" id="message" name="message" placeholder="Type your message..."></textarea>
+          <input type="submit" name="" value="Submit">
+     </form>
+     <script>
+        var form = document.getElementById('form')
+
+        form.addEventListener('submit', function(event){
+            event.preventDefault() //prevents the form from autosubmitting
+            const formData = new FormData(this);
+            const entries = formData.entries();
+            const data = Object.fromEntries(entries); // turns into object
+            console.log(data); // JS Object showing form items
+            // fetch post -- bellow this I'm pretty clueless
+            fetch('/api', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+        });
+     </script>
+</body>
+</html>
