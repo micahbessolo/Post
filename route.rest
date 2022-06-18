@@ -1,0 +1,28 @@
+GET http://localhost:3000/api
+
+###
+
+GET http://localhost:3000/form/62a668646e79d0f9e718d046
+
+###
+
+POST http://localhost:3000/api
+Content-Type: application/json
+
+{
+    "name": "Amazing Person",
+    "email": "1, 2, and 3"
+}
+
+###
+
+DELETE http://localhost:3000/form/62a668646e79d0f9e718d046
+
+###
+
+PATCH http://localhost:3000/form/62a69b05d4fddee343607039
+Content-Type: application/json
+
+{
+    "name": "New Name"
+}
